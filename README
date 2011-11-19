@@ -1,0 +1,5 @@
+Ledger123 - SQL-Ledger Crossgrade Script
+========================================
+
+This script converts a database from Ledger123 or from SQL-Ledger Community Version to the original SQL-Ledger.
+
