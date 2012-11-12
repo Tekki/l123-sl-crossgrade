@@ -1,6 +1,6 @@
 -- Ledger123 to SQL-Ledger Crossgrade Script
 --
--- Tekki 2011
+-- Tekki 2011-2012
 
 -- Restore the original table structure
 ALTER TABLE acc_trans DROP COLUMN entry_id;
@@ -20,6 +20,11 @@ ALTER TABLE invoice DROP COLUMN lastcost;
 ALTER TABLE invoice DROP COLUMN warehouse_id;
 ALTER TABLE invoice DROP COLUMN cogs;
 
+ALTER TABLE chart DROP COLUMN allow_gl;
+
+ALTER TABLE customer DROP COLUMN department_id;
+ALTER TABLE vendor DROP COLUMN department_id;
+
 -- Drop additional tables and sequences
 
 DROP TABLE trf;
@@ -28,6 +33,7 @@ DROP TABLE build;
 DROP TABLE customercart;
 DROP TABLE customerlogin;
 DROP TABLE partsattr;
+DROP TABLE fifo;
 
 DROP SEQUENCE entry_id;
 DROP SEQUENCE customerloginid;
@@ -43,4 +49,4 @@ DROP VIEW IF EXISTS v_vendors_all;
 
 -- Set database version
 
-UPDATE defaults SET fldvalue = '2.8.10' WHERE fldname = 'version';
+UPDATE defaults SET fldvalue = '2.8.10' WHERE fldname = 'version' AND fldvalue = '2.8.12';
